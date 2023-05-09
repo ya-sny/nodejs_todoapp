@@ -1,8 +1,19 @@
 const express = require("express");
 const app = express();
-const taskRoute =require("./routes/tasks")
-const PORT = 3000;
+const taskRoute = require("./routes/tasks")
+const connectDB = require("./db/connect");
+require("dotenv").config();
 
 app.use("/api/v1/tasks", taskRoute);
 
-app.listen(PORT, console.log("server start"));
+const start = async () => {
+  try {
+    await connectDB(process.env.MONGODB_URL);
+    app.listen(process.env.PORT, console.log("server start"));
+  }
+  catch (err) {
+    console.log(err);
+  }
+}
+
+start();
