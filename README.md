@@ -2,10 +2,10 @@
 このリポジトリは、Node.jsおよびExpressフレームワークを使用した簡単なTodoアプリの実装例です。Mongooseライブラリを使用してMongoDBに接続し、ユーザーがタスクを追加、編集、削除できるようになっています。
 
 ## 技術スタック
-Node.js
-Express.js
-MongoDB
-Mongoose
+#### Node.js
+#### Express.js
+#### MongoDB
+#### Mongoose
 
 ## インストール
 1, このリポジトリをクローンします。
