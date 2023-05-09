@@ -3,6 +3,7 @@ const app = express();
 const taskRoute = require("./routes/tasks")
 const connectDB = require("./db/connect");
 require("dotenv").config();
+app.use(express.json());
 
 app.use("/api/v1/tasks", taskRoute);
 
