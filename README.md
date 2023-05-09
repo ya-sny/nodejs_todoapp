@@ -15,7 +15,7 @@ git clone git@github.com:ya-sny/nodejs_todoapp.git
 
 2, 必要なパッケージをインストールします。
 ```
-cd nodejs-todoapp-udemy
+cd nodejs_todoapp
 npm install
 ```
 

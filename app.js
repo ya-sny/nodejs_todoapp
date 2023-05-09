@@ -6,6 +6,7 @@ require("dotenv").config();
 app.use(express.json());
 
 app.use("/api/v1/tasks", taskRoute);
+app.use(express.static("./public"));
 
 const start = async () => {
   try {
