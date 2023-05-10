@@ -5,16 +5,36 @@
   <meta charset="UTF-8">
   <title>todo app</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />""""""""""
 </head>
 
 <body>
   <form class="task-form">
     <h4>todo アプリ</h4>
     <div class="form-control">
-      <input type="text" name="name" class="tast-input"/>
+      <input type="text" name="name" class="tast-input" />
       <button type="submit" class="btn submit-btn">送信</button>
     </div>
   </form>
+  <section class="tasks-container">
+    <div class="tasks">
+      <div class="single-task">
+        <h5>
+          <span><i class="fas fa-thin fa-check"></i></span>todo task
+        </h5>
+        <div class="task-links">
+          <a class="edit-link" href="#">
+            <i class="fas fa-thin fa-pen-to-square"></i>
+          </a>
+          <button type="button" class="delete-btn">
+            <i class="fas fa-thin fa-trash"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
 </body>
 
 </html>
