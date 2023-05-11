@@ -1,7 +1,7 @@
-const tasksDom = document.querySelector(".tasks");
-const formDom = document.querySelector(".task-form");
-const taskInputDom = document.querySelector(".task-input");
-const formAlertDom = document.querySelector(".form-alert");
+const tasksDOM = document.querySelector(".tasks");
+const formDOM = document.querySelector(".task-form");
+const taskInputDOM = document.querySelector(".task-input");
+const formAlertDOM = document.querySelector(".form-alert");
 
 const showTasks = async () => {
   try {
@@ -10,7 +10,7 @@ const showTasks = async () => {
 
     //タスクが一つもない
     if (tasks.length < 1) {
-      tasksDom.innerHTML = `<h5 class"empty-list">タスクがありません</h5>`
+      tasksDOM.innerHTML = `<h5 class"empty-list">タスクがありません</h5>`
       return;
     }
 
@@ -32,7 +32,7 @@ const showTasks = async () => {
         </div>
       </div>`
     }).join("");
-    tasksDom.innerHTML = allTasks;
+    tasksDOM.innerHTML = allTasks;
   }
   catch (err) {
     console.log(err);
@@ -41,29 +41,29 @@ const showTasks = async () => {
 
 showTasks();
 
-formDom.addEventListener("submit", async (event) => {
+formDOM.addEventListener("submit", async (event) => {
   event.preventDefault();
-  const name = taskInputDom.value;
+  const name = taskInputDOM.value;
   try {
     await axios.post("/api/v1/tasks", {name: name});
     showTasks();
-    taskInputDom.value = "";
-    formAlertDom.style.display = "block";
-    formAlertDom.textContent = "タスクを追加しました。";
-    formAlertDom.classList.add("text-success");
+    taskInputDOM.value = "";
+    formAlertDOM.style.display = "block";
+    formAlertDOM.textContent = "タスクを追加しました。";
+    formAlertDOM.classList.add("text-success");
   }
   catch (err) {
     console.log(err);
-    formAlertDom.style.display = "block";
-    formAlertDom.innerHTML = "無効です。もう一度やり直してください。";
+    formAlertDOM.style.display = "block";
+    formAlertDOM.innerHTML = "無効です。もう一度やり直してください。";
   }
   setTimeout(() => {
-    formAlertDom.style.display = "none";
-    formAlertDom.classList.remove("text-success");
+    formAlertDOM.style.display = "none";
+    formAlertDOM.classList.remove("text-success");
   }, 3000);
 });
 
-tasksDom.addEventListener("click", async (event) => {
+tasksDOM.addEventListener("click", async (event) => {
   const element = event.target;
   if (element.parentElement.classList.contains("delete-btn")) {
     const id = element.parentElement.dataset.id;
