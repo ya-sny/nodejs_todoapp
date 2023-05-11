@@ -23,7 +23,7 @@ const showTasks = async () => {
           <span><i class="fas fa-thin fa-check"></i></span>${name}
         </h5>
         <div class="task-links">
-          <a class="edit-link" href="#">
+          <a class="edit-link" href="edit.html?id=${_id}">
             <i class="fas fa-thin fa-pen-to-square"></i>
           </a>
           <button type="button" class="delete-btn" data-id="${_id}">
