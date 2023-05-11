@@ -4,6 +4,7 @@ const taskIDDOM = document.querySelector(".task-edit-id");
 const taskNameDOM = document.querySelector(".task-edit-name");
 const editFormDOM = document.querySelector(".single-task-form");
 const formAlertDOM = document.querySelector(".form-alert");
+const taskCompletedDom = document.querySelector(".task-edit-completed");
 
 const showTask = async () => {
   try {
@@ -11,6 +12,9 @@ const showTask = async () => {
     const {_id, completed, name} = task;
     taskIDDOM.textContent = _id;
     taskNameDOM.value = name;
+    if (completed) {
+      taskCompletedDom.checked = true;
+    }
   }
   catch (err) {
     console.log(err);
@@ -23,8 +27,10 @@ editFormDOM.addEventListener("submit", async (event) => {
   event.preventDefault();
   try {
     const taskName = taskNameDOM.value;
-    const {data: task} = await axios.patch(`/api/v1/tasks/${id}`, {
+    const taskCompleted = taskCompletedDom.checked;
+    await axios.patch(`/api/v1/tasks/${id}`, {
       name: taskName,
+      completed: taskCompleted,
     });
     formAlertDOM.style.display = "block";
     formAlertDOM.textContent = "編集に成功しました";
