@@ -1,6 +1,7 @@
 const tasksDom = document.querySelector(".tasks");
 const formDom = document.querySelector(".task-form");
 const taskInputDom = document.querySelector(".task-input");
+const formAlertDom = document.querySelector(".form-alert");
 
 const showTasks = async () => {
   try {
@@ -8,9 +9,9 @@ const showTasks = async () => {
     const {data: tasks} = await axios.get("/api/v1/tasks");
 
     //タスクが一つもない
-    if (tasks.length < 1){
+    if (tasks.length < 1) {
       tasksDom.innerHTML = `<h5 class"empty-list">タスクがありません</h5>`
-      return ;
+      return;
     }
 
     //タスクを出力
@@ -47,10 +48,19 @@ formDom.addEventListener("submit", async (event) => {
     await axios.post("/api/v1/tasks", {name: name});
     showTasks();
     taskInputDom.value = "";
+    formAlertDom.style.display = "block";
+    formAlertDom.textContent = "タスクを追加しました。";
+    formAlertDom.classList.add("text-success");
   }
   catch (err) {
     console.log(err);
+    formAlertDom.style.display = "block";
+    formAlertDom.innerHTML = "無効です。もう一度やり直してください。";
   }
+  setTimeout(() => {
+    formAlertDom.style.display = "none";
+    formAlertDom.classList.remove("text-success");
+  }, 3000);
 });
 
 tasksDom.addEventListener("click", async (event) => {
