@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>タスクの編集</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <form class="single-task-form" action="">
+      <h4>タスクの編集</h4>
+      <div class="form-control">
+        <label>タスクID</label>
+        <p class="task-edit-id"></p>
+      </div>
+      <div class="form-control">
+        <label for="name">名前</label>
+        <input class="task-edit-name" type="text" name="name" />
+      </div>
+      <div class="form-control">
+        <label for="completed">完了・未完了</label>
+        <input class="task-edit-completed" type="checkbox" name="completed" />
+      </div>
+      <button type="submit" class="block btn task-edit-btn">編集</button>
+      <a class="btn back-link" href="index.html">タスクに戻る</a>
+    </form>
+  </div>
+</body>
+</html>
