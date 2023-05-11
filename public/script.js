@@ -1,4 +1,6 @@
 const tasksDom = document.querySelector(".tasks");
+const formDom = document.querySelector(".task-form");
+const taskInputDom = document.querySelector(".task-input");
 
 const showTasks = async () => {
   try {
@@ -30,3 +32,16 @@ const showTasks = async () => {
 }
 
 showTasks();
+
+formDom.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const name = taskInputDom.value;
+  try {
+    await axios.post("/api/v1/tasks", {name: name});
+    showTasks();
+    taskInputDom.value = "";
+  }
+  catch (err) {
+    console.log(err);
+  }
+});
