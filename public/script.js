@@ -45,12 +45,19 @@ formDOM.addEventListener("submit", async (event) => {
   event.preventDefault();
   const name = taskInputDOM.value;
   try {
-    await axios.post("/api/v1/tasks", {name: name});
-    showTasks();
-    taskInputDOM.value = "";
-    formAlertDOM.style.display = "block";
-    formAlertDOM.textContent = "タスクを追加しました。";
-    formAlertDOM.classList.add("text-success");
+    const {data: tasks} = await axios.get("/api/v1/tasks");
+    if (tasks.length > 10) {
+      formAlertDOM.style.display = "block";
+      formAlertDOM.textContent = "タスク作成は10個までです。"
+    }
+    else {
+      await axios.post("/api/v1/tasks", {name: name});
+      showTasks();
+      taskInputDOM.value = "";
+      formAlertDOM.style.display = "block";
+      formAlertDOM.textContent = "タスクを追加しました。";
+      formAlertDOM.classList.add("text-success");
+    }
   }
   catch (err) {
     console.log(err);
